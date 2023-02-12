@@ -19,7 +19,7 @@ export * from './contacts.schema'
 
 export const contact = (app: Application) => {
   app.use(contactPath, new ContactService(getOptions(app)), {
-    methods: contactMethods,
+    methods: contactMethods
   })
 
   app.service(contactPath).hooks({

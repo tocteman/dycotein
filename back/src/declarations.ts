@@ -7,8 +7,10 @@ import { Contact } from './services/contacts/contacts'
 
 export { NextFunction }
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface Configuration extends ApplicationConfiguration {}
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ServiceTypes {}
 
 export type Application = FeathersApplication<ServiceTypes, Configuration>
