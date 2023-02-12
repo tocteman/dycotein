@@ -1,8 +1,15 @@
 {
   "name": "back",
-  "version": "1.0.0",
-  "description": "",
-  "main": "lib/client",
+  "description": "'Backend for Contact Directory using Feathers + MySQL'",
+  "version": "0.0.0",
+  "homepage": "",
+  "private": true,
+  "keywords": [
+    "feathers"
+  ],
+  "author": {},
+  "contributors": [],
+  "bugs": {},
   "engines": {
     "node": ">= 16.15.0"
   },
@@ -12,18 +19,21 @@
     "database": "mysql",
     "framework": "koa",
     "transports": [
-      "rest"
+      "rest",
+      "websockets"
     ],
     "schema": "typebox"
   },
   "directories": {
-    "lib": "src"
+    "lib": "src",
+    "test": "test"
   },
   "files": [
     "lib/client.js",
     "lib/**/*.d.ts",
     "lib/**/*.shared.js"
   ],
+  "main": "lib/client",
   "scripts": {
     "dev": "nodemon -x ts-node src/index.ts",
     "compile": "shx rm -rf lib/ && tsc",
@@ -35,34 +45,38 @@
     "migrate": "knex migrate:latest",
     "migrate:make": "knex migrate:make"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "dependencies": {
+    "@feathersjs/adapter-commons": "^5.0.0-pre.37",
+    "@feathersjs/authentication": "^5.0.0-pre.37",
+    "@feathersjs/authentication-client": "^5.0.0-pre.37",
+    "@feathersjs/authentication-local": "^5.0.0-pre.37",
+    "@feathersjs/authentication-oauth": "^5.0.0-pre.37",
+    "@feathersjs/configuration": "^5.0.0-pre.37",
+    "@feathersjs/errors": "^5.0.0-pre.37",
+    "@feathersjs/feathers": "^5.0.0-pre.37",
+    "@feathersjs/knex": "^5.0.0-pre.37",
+    "@feathersjs/koa": "^5.0.0-pre.37",
+    "@feathersjs/schema": "^5.0.0-pre.37",
+    "@feathersjs/socketio": "^5.0.0-pre.37",
+    "@feathersjs/transport-commons": "^5.0.0-pre.37",
+    "@feathersjs/typebox": "^5.0.0-pre.37",
+    "knex": "^2.4.2",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.1.2",
+    "winston": "^3.8.2"
+  },
   "devDependencies": {
+    "@feathersjs/cli": "^5.0.0-pre.37",
+    "@feathersjs/rest-client": "^5.0.0-pre.37",
+    "@types/mocha": "^10.0.1",
     "@types/node": "^18.13.0",
     "axios": "^1.3.2",
     "cross-env": "^7.0.3",
     "mocha": "^10.2.0",
+    "nodemon": "^2.0.20",
+    "prettier": "^2.8.4",
+    "shx": "^0.3.4",
     "ts-node": "^10.9.1",
     "typescript": "^4.9.5"
-  },
-  "dependencies": {
-    "@feathersjs/adapter-commons": "^5.0.0-pre.37",
-    "@feathersjs/authentication": "^5.0.0-pre.37",
-    "@feathersjs/cli": "^4.8.0",
-    "@feathersjs/configuration": "^4.5.15",
-    "@feathersjs/errors": "^5.0.0-pre.37",
-    "@feathersjs/feathers": "^5.0.0-pre.37",
-    "@feathersjs/knex": "^5.0.0-pre.24",
-    "@feathersjs/koa": "^5.0.0-pre.37",
-    "@feathersjs/rest-client": "^4.5.15",
-    "@feathersjs/schema": "^5.0.0-pre.37",
-    "@feathersjs/transport-commons": "^5.0.0-pre.37",
-    "@feathersjs/typebox": "^5.0.0-pre.30",
-    "knex": "^2.4.2",
-    "mysql2": "^3.1.2",
-    "nodemon": "^2.0.20",
-    "shx": "^0.3.4",
-    "winston": "^3.8.2"
   }
 }

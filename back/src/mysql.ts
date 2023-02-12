@@ -15,4 +15,3 @@ export const mysql = (app: Application) => {
 
   app.set('mysqlClient', db)
 }
-

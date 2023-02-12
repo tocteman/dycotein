@@ -4,24 +4,24 @@ import { KnexService } from '@feathersjs/knex'
 import type { KnexAdapterParams, KnexAdapterOptions } from '@feathersjs/knex'
 
 import type { Application } from '../../declarations'
-import type { Contacts, ContactsData, ContactsPatch, ContactsQuery } from './contacts.schema'
+import type { User, UserData, UserPatch, UserQuery } from './users.schema'
 
-export type { Contacts, ContactsData, ContactsPatch, ContactsQuery }
+export type { User, UserData, UserPatch, UserQuery }
 
-export interface ContactsParams extends KnexAdapterParams<ContactsQuery> {}
+export interface UserParams extends KnexAdapterParams<UserQuery> {}
 
 // By default calls the standard Knex adapter service methods but can be customized with your own functionality.
-export class ContactsService<ServiceParams extends Params = ContactsParams> extends KnexService<
-  Contacts,
-  ContactsData,
+export class UserService<ServiceParams extends Params = UserParams> extends KnexService<
+  User,
+  UserData,
   ServiceParams,
-  ContactsPatch
+  UserPatch
 > {}
 
 export const getOptions = (app: Application): KnexAdapterOptions => {
   return {
     paginate: app.get('paginate'),
     Model: app.get('mysqlClient'),
-    name: 'contacts'
+    name: 'users'
   }
 }

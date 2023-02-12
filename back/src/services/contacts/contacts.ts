@@ -1,33 +1,60 @@
+// For more information about this file see https://dove.feathersjs.com/guides/cli/service.html
+import { authenticate } from '@feathersjs/authentication'
+
 import { hooks as schemaHooks } from '@feathersjs/schema'
 
 import {
-  contactDataValidator,
-  contactPatchValidator,
-  contactQueryValidator,
-  contactResolver,
-  contactDataResolver,
-  contactPatchResolver,
-  contactQueryResolver
+  contactsDataValidator,
+  contactsPatchValidator,
+  contactsQueryValidator,
+  contactsResolver,
+  contactsExternalResolver,
+  contactsDataResolver,
+  contactsPatchResolver,
+  contactsQueryResolver
 } from './contacts.schema'
 
 import type { Application } from '../../declarations'
-import { ContactService, getOptions } from './contacts.class'
-import { contactPath, contactMethods } from './contacts.shared'
+import { ContactsService, getOptions } from './contacts.class'
+import { contactsPath, contactsMethods } from './contacts.shared'
 
 export * from './contacts.class'
 export * from './contacts.schema'
 
-export const contact = (app: Application) => {
-  app.use(contactPath, new ContactService(getOptions(app)), {
-    methods: contactMethods
+// A configure function that registers the service and its hooks via `app.configure`
+export const contacts = (app: Application) => {
+  // Register our service on the Feathers application
+  app.use(contactsPath, new ContactsService(getOptions(app)), {
+    // A list of all methods this service exposes externally
+    methods: contactsMethods,
+    // You can add additional custom events to be sent to clients here
+    events: []
   })
-
-  app.service(contactPath).hooks({
+  // Initialize hooks
+  app.service(contactsPath).hooks({
     around: {
-      all: [schemaHooks.resolveResult(contactResolver)]
+      all: [
+        authenticate('jwt'),
+        schemaHooks.resolveExternal(contactsExternalResolver),
+        schemaHooks.resolveResult(contactsResolver)
+      ]
     },
     before: {
-      all: [schemaHooks.validateQuery(contactQueryValidator), schemaHooks.resolveQuery(contactQueryResolver)],
+      all: [
+        schemaHooks.validateQuery(contactsQueryValidator),
+        schemaHooks.resolveQuery(contactsQueryResolver)
+      ],
+      find: [],
+      get: [],
+      create: [
+        schemaHooks.validateData(contactsDataValidator),
+        schemaHooks.resolveData(contactsDataResolver)
+      ],
+      patch: [
+        schemaHooks.validateData(contactsPatchValidator),
+        schemaHooks.resolveData(contactsPatchResolver)
+      ],
+      remove: []
     },
     after: {
       all: []
@@ -41,7 +68,6 @@ export const contact = (app: Application) => {
 // Add this service to the service type index
 declare module '../../declarations' {
   interface ServiceTypes {
-    [contactPath]: ContactService
+    [contactsPath]: ContactsService
   }
 }
-
