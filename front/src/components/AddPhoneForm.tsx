@@ -4,8 +4,14 @@ import { PHONE_TYPES } from '../lib/constants'
 import {DevicePhoneMobileIcon, HomeModernIcon, BuildingOfficeIcon } from '@heroicons/react/20/solid'
 import toast from 'react-hot-toast'
 import { useLocation } from 'wouter'
+import { Contact } from '../types'
 
-const AddPhoneForm = ({contact, setDisplayPhoneForm}) => {
+type Props = {
+  contact: Contact,
+  setDisplayPhoneForm: any
+}
+
+const AddPhoneForm = ({contact, setDisplayPhoneForm}: Props) => {
   const [phoneNumber, setPhoneNumber] = useState("")
   const [ type, setType ] = useState("cellphone")
   const [ location, setLocation] = useLocation()

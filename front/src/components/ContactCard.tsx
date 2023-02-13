@@ -27,7 +27,7 @@ const ContactCard = ({contact}) => {
       <div className="flex justify-between items-end">
         <div className="flex flex-col space-y-2">
           {phones.map(phone => (
-            <PhoneCard phone={phone} key={phone.id}/>
+            <PhoneCard phone={phone} isBig={false} key={phone.id}/>
           ))}
         </div>
         <div>

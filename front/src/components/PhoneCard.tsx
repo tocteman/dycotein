@@ -4,7 +4,11 @@ type Phone = {
   type: 'cellphone' | 'home' | 'office',
   phone: string
 }
-const PhoneCard = ({phone, isBig}: {phone: Phone, isBig: boolean}) => {
+type Props = {
+  phone: Phone,
+  isBig: boolean
+}
+const PhoneCard = ({phone, isBig}: Props) => {
   const { type } = phone
   return (
     <div className="flex space-x-2 items-center">

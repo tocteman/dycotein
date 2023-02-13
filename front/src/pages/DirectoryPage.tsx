@@ -8,9 +8,9 @@ import { flagEmoji } from '../lib/utils'
 
 const DirectoryPage = () => {
 
-  const [ contacts, setContacts] = useState<any[]>([])
+  const [ contacts, setContacts] = useState<any>([])
   const [location, setLocation ] = useLocation()
-  const [ countries, setCountries ] = useState<any[]>([])
+  const [ countries, setCountries ] = useState<any>([])
 
   useEffect(() => {
     apiGet('contacts')

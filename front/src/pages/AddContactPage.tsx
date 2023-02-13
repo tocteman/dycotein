@@ -11,7 +11,7 @@ const AddContactPage = () => {
   const [lastName, setLastName] = useState("")
   const [nationality, setNationality] = useState("")
   const [location, setLocation] = useLocation()
-  const [countries, setCountries] = useState([])
+  const [countries, setCountries] = useState<any>([])
   const [selectedCountry, setSelectedCountry] = useState(null)
   
   const add = async (event) => {
