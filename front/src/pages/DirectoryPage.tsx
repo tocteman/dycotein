@@ -20,11 +20,8 @@ const DirectoryPage = () => {
     apiGet('contacts')
     .then(allContacts => setContacts(allContacts))
     .catch(err => {
-      if(err.message === "jwt malformed") {
         setLocation('/login')
-      } else {
         toast.error(err.message)
-      }
     })
   }, [])
 
