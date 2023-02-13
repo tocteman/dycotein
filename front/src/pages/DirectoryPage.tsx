@@ -26,7 +26,7 @@ const DirectoryPage = () => {
   }, [])
 
   const logout = () => {
-    window.localStorage.removeItem("access_token")
+    window.localStorage.removeItem("accessToken")
     setLocation('/login')
   }
   
