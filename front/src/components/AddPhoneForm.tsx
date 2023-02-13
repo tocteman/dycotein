@@ -42,7 +42,8 @@ const AddPhoneForm = ({contact, setDisplayPhoneForm}) => {
       <div className="flex space-x-4">
         {PHONE_TYPES.map(x => (
           <div 
-          className={ `bg-gray-800 border-2 border-black rounded-full p-4 w-16 h-16 cursor-pointer ${type === x ? "text-white" : "text-gray-400"}`} 
+          key={x}
+          className={ `border-2 border-black rounded-full p-4 w-16 h-16 cursor-pointer ${type === x ? "bg-gray-600 text-white" : "bg-gray-800 text-gray-400"}`} 
           onClick={() => setType(x)}
           >
             {x === 'cellphone' && <DevicePhoneMobileIcon/>}

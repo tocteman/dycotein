@@ -1,11 +1,14 @@
 import { ChevronRightIcon } from '@heroicons/react/20/solid'
 import { useLocation } from 'wouter'
 import PhoneCard from './PhoneCard'
+import { flagEmoji } from '../lib/utils'
 
 const ContactCard = ({contact}) => {
 
   const [location, setLocation] = useLocation()
   const phones = contact.phoneNumbers?.data ?? []
+
+  const nationality = contact.nationality.data[0]
   
   return (
     <div className="p-4 border-2 border-black rounded shadow flex flex-col space-y-2">
@@ -21,11 +24,16 @@ const ContactCard = ({contact}) => {
           </div>
         </button>
       </div>
-      <div>
-        {phones.map(phone => (
-          <PhoneCard phone={phone} key={phone.id}/>
-        ))}
-        
+      <div className="flex justify-between items-end">
+        <div className="flex flex-col space-y-2">
+          {phones.map(phone => (
+            <PhoneCard phone={phone} key={phone.id}/>
+          ))}
+        </div>
+        <div>
+            {flagEmoji(nationality.flag)}
+        </div>
+
       </div>
       
 

@@ -17,8 +17,8 @@ export const contactsSchema = Type.Object(
     created_at: Type.String(),
     updated_at: Type.String(),
     phoneNumbers: Type.Optional(Type.Any()),
-    country_id: Type.String(),
-    nationality: Type.Ref(countriesSchema),
+    country_id: Type.Number(),
+    nationality: Type.Optional(Type.Any())
     // phoneNumbers: Type.Ref(phoneNumbersSchema)
   },
   { $id: 'Contacts', additionalProperties: true }
@@ -34,6 +34,14 @@ export const contactsResolver = resolve<Contacts, HookContext>({
       }
     }) ?? undefined
     return phones.data?.length > 0 ? phones : undefined
+  }),
+  nationality: virtual(async (message, context) => {
+    const nationality = await context.app.service('countries').find({
+      query: {
+        id: message.country_id
+      }
+    }) ?? undefined
+    return nationality.data?.length > 0 ? nationality : undefined
   })
 })
 

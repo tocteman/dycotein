@@ -15,15 +15,15 @@ h2 {
 }
 
 h4 {
-  @apply tracking-tight text-xl font-bold
+  @apply tracking-tight text-xl 
 }
 
 input {
-  @apply appearance-none bg-gray-800 text-neutral-100 focus:text-neutral-200 border-2 border-black py-2 px-4 focus:outline-none rounded text-xl tracking-tight font-bold
+  @apply appearance-none bg-gray-800 text-neutral-100 focus:text-neutral-200 border-2 border-black py-2 px-4 focus:outline-none rounded text-xl tracking-tight font-bold focus:bg-gray-600
 }
 
 label {
-  @apply text-lg tracking-tight
+  @apply text-xl tracking-tight font-bold
 }
 
 .input-group {

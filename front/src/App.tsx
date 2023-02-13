@@ -7,6 +7,7 @@ import Toast from './components/Toast'
 
 function App() {
 
+
   return (
   <main className="bg-neutral-900 text-neutral-50 min-h-screen overflow-x-hidden">
   <Toast/>
