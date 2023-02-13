@@ -15,7 +15,13 @@ const DirectoryPage = () => {
   useEffect(() => {
     apiGet('contacts')
     .then(allContacts => setContacts(allContacts))
-    .catch(err => toast.error(err.message))
+    .catch(err => {
+      if(err.message === "jwt malformed") {
+        setLocation('/login')
+      } else {
+        toast.error(err.message)
+      }
+    })
   }, [])
 
   const logout = () => {
