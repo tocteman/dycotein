@@ -16,13 +16,14 @@ const DirectoryPage = () => {
     const token = window.localStorage.getItem("accessToken")
     if (!token) {
       setLocation('/login')
+    } else {
+      apiGet('contacts')
+      .then(allContacts => setContacts(allContacts))
+      .catch(err => {
+          setLocation('/login')
+          toast.error(err.message)
+      })
     }
-    apiGet('contacts')
-    .then(allContacts => setContacts(allContacts))
-    .catch(err => {
-        setLocation('/login')
-        toast.error(err.message)
-    })
   }, [])
 
   const logout = () => {
