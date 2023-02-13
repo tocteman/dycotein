@@ -15,7 +15,7 @@ const DirectoryPage = () => {
   useEffect(() => {
     const token = window.localStorage.getItem("accessToken")
     if (!token) {
-      setLocation('/')
+      setLocation('/login')
     }
     apiGet('contacts')
     .then(allContacts => setContacts(allContacts))
