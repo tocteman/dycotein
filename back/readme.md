@@ -1,42 +1,14 @@
 # back
 
-> 'Backend for Contact Directory using Feathers + MySQL'
+### Backend del directorio; Feathers.js + MySQL
 
-## About
+Aunque en un principio me propuse codificar el proyecto línea por línea, obtuve tantos errores con los que no estaba familiarizado que opté por usar los generadores del CLI. En realidad no hice mucho más que generar los servicios, cambiar un par de _resolvers_ y cambiar los esquemas y migraciones. 
 
-This project uses [Feathers](http://feathersjs.com). An open source framework for building APIs and real-time applications.
+Ahora bien, ese camino del error sí me dio una idea más o menos clara sobre cómo funciona el framework: Modelos y Controladores pasan a ser Servicios y Gatillos; en un principio no hay necesidad de declarar ni rutas ni métodos. En general me gustó bastante; sé que habrá bastante por aprender.
 
-## Getting Started
-
-1. Make sure you have [NodeJS](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed.
-2. Install your dependencies
-
-    ```
-    cd path/to/back
-    npm install
-    ```
-
-3. Start your app
-
-    ```
-    npm run compile # Compile TypeScript source
-    npm run migrate # Run migrations to set up the database
-    npm start
-    ```
-
-## Testing
-
-Run `npm test` and all your tests in the `test/` directory will be run.
-
-## Scaffolding
-
-This app comes with a powerful command line interface for Feathers. Here are a few things it can do:
-
+La base de datos está alojada en Digital Ocean y debe ser declarada en un archivo **.env** de esta forma:
 ```
-$ npx feathers help                           # Show all commands
-$ npx feathers generate service               # Generate a new Service
+DATABASE_URL=mysql://TODO_EL_CONNECTION_STRING
 ```
 
-## Help
-
-For more information on all the things you can do with Feathers visit [docs.feathersjs.com](http://docs.feathersjs.com).
+El servidor, por su parte, está alojado en [Fly](https://fly.io).
