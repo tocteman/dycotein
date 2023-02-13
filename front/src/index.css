@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1 {
+  @apply tracking-tight text-4xl font-bold
+}
+
+input {
+  @apply appearance-none bg-gray-800 text-neutral-100 focus:text-neutral-200 border-2 border-black py-2 px-4 focus:outline-none rounded
+}
+
+.input-group {
+  @apply flex flex-col space-y-1
+}
+
+.main-btn {
+  @apply px-4 py-2 bg-gradient-to-b from-sky-800 to-sky-900 text-sky-100 rounded border-2 border-black font-bold text-lg
+}

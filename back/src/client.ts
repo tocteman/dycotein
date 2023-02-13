@@ -4,6 +4,22 @@ import type { TransportConnection, Application } from '@feathersjs/feathers'
 import authenticationClient from '@feathersjs/authentication-client'
 import type { AuthenticationClientOptions } from '@feathersjs/authentication-client'
 
+import { phoneNumbersClient } from './services/phone-numbers/phone-numbers.shared'
+export type {
+  PhoneNumbers,
+  PhoneNumbersData,
+  PhoneNumbersQuery,
+  PhoneNumbersPatch
+} from './services/phone-numbers/phone-numbers.shared'
+
+import { countriesClient } from './services/countries/countries.shared'
+export type {
+  Countries,
+  CountriesData,
+  CountriesQuery,
+  CountriesPatch
+} from './services/countries/countries.shared'
+
 import { contactsClient } from './services/contacts/contacts.shared'
 export type {
   Contacts,
@@ -43,5 +59,7 @@ export const createClient = <Configuration = any>(
 
   client.configure(userClient)
   client.configure(contactsClient)
+  client.configure(countriesClient)
+  client.configure(phoneNumbersClient)
   return client
 }
