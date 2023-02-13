@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import { apiGet, apiDelete } from '../lib/fetcher'
 import { Link, useLocation } from 'wouter'
+import ContactCard from '../components/ContactCard'
+import Loader from '../components/Loader'
 import toast from 'react-hot-toast'
 
 const DirectoryPage = () => {
@@ -15,16 +17,24 @@ const DirectoryPage = () => {
   }, [])
   
   return (
-    <div>
+    <div className="flex flex-col space-y-6">
+      <div className="flex justify-between">
       <h1>
         Directorio
       </h1>
+      <button onClick={() => setLocation("/add_contact")}>
+      <h1>
+        +
+      </h1>
+      </button>
 
-      {contacts?.data?.map(contact => (
-        <div>
-        {contact.first_name}
-        </div>
-      ))}
+      </div>
+      <div className="flex flex-col space-y-4">
+        {(!contacts.data || contacts?.data?.length < 1) && <Loader/>}
+        {contacts?.data?.map(contact => (
+          <ContactCard contact={contact} key={contact.id}/>
+        ))}
+      </div>
     </div>
   )
 

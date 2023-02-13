@@ -2,12 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
+Link, a {
+  @apply cursor-pointer
+}
+
 h1 {
-  @apply tracking-tight text-4xl font-bold
+  @apply tracking-tight text-5xl font-bold
+}
+
+h2 {
+  @apply tracking-tight text-3xl font-bold
+}
+
+h4 {
+  @apply tracking-tight text-xl font-bold
 }
 
 input {
-  @apply appearance-none bg-gray-800 text-neutral-100 focus:text-neutral-200 border-2 border-black py-2 px-4 focus:outline-none rounded
+  @apply appearance-none bg-gray-800 text-neutral-100 focus:text-neutral-200 border-2 border-black py-2 px-4 focus:outline-none rounded text-xl tracking-tight font-bold
+}
+
+label {
+  @apply text-lg tracking-tight
 }
 
 .input-group {
@@ -15,5 +31,5 @@ input {
 }
 
 .main-btn {
-  @apply px-4 py-2 bg-gradient-to-b from-sky-800 to-sky-900 text-sky-100 rounded border-2 border-black font-bold text-lg
+  @apply px-4 py-2 bg-gradient-to-b from-gray-700 to-gray-800 text-sky-100 rounded border-2 border-black font-bold text-lg
 }

@@ -14,11 +14,13 @@ export const apiGet = (suffix: string, params: string = '') => {
 }
 export const apiPost = async (suffix: string, body: any) => {
   const url = `${apiBaseUrl}/${suffix}`
+  const headers = suffix.includes("authentication") ? 
+    { 'Content-Type': 'application/json'} :
+    { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token()}`} 
+
   return await fetch(url, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
+    headers,
     body: JSON.stringify(body)
   })
   .then(handleResponse)
@@ -28,7 +30,8 @@ export const apiPatch = async (suffix: string, body: any) => {
   return await fetch(url, {
     method: 'PATCH',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token()}`
     },
     body: JSON.stringify(body)
   })
@@ -38,7 +41,10 @@ export const apiPatch = async (suffix: string, body: any) => {
 export const apiDelete = async (suffix: string) => {
   const url = `${apiBaseUrl}/${suffix}`
   return await fetch(url, { 
-      method: "DELETE", credentials: 'include'
+      method: "DELETE", 
+      headers: {
+        'Authorization': `Bearer ${token()}`
+      }
   })
   .then(handleResponse)
 }

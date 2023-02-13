@@ -25,7 +25,7 @@ export const phoneNumbersResolver = resolve<PhoneNumbers, HookContext>({})
 export const phoneNumbersExternalResolver = resolve<PhoneNumbers, HookContext>({})
 
 // Schema for creating new entries
-export const phoneNumbersDataSchema = Type.Pick(phoneNumbersSchema, ['phone', 'contact_id'], {
+export const phoneNumbersDataSchema = Type.Pick(phoneNumbersSchema, ['phone', 'contact_id', 'type'], {
   $id: 'PhoneNumbersData'
 })
 export type PhoneNumbersData = Static<typeof phoneNumbersDataSchema>

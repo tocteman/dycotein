@@ -1,4 +1,4 @@
-{
+module.exports = {
   "host": "localhost",
   "port": 3030,
   "public": "./public/",
@@ -11,7 +11,7 @@
   },
   "mysql": {
     "client": "mysql2",
-    "connection": "mysql://doadmin:AVNS_tCtmyObPp-wI9kMK-IY@db-mysql-nyc1-74857-do-user-7835641-0.b.db.ondigitalocean.com:25060/defaultdb?ssl-mode=REQUIRED"
+    "connection": process.env.DATABASE_URL,
   },
   "authentication": {
     "entity": "user",
