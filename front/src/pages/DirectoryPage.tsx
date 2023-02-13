@@ -13,6 +13,10 @@ const DirectoryPage = () => {
   const [ countries, setCountries ] = useState<any>([])
 
   useEffect(() => {
+    const token = window.localStorage.getItem("accessToken")
+    if (!token) {
+      setLocation('/')
+    }
     apiGet('contacts')
     .then(allContacts => setContacts(allContacts))
     .catch(err => {
